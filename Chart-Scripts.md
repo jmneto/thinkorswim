@@ -1,7 +1,34 @@
 
 # thinkorSwim thinkScript Custom Chart Indicators
 
+### 8.45-Day Exponential Moving Average (EMA)
+---
+
+- **Description:**  
+  Plots an 8.45-day Exponential Moving Average (EMA) on the chart, dynamically adjusting to any aggregation period. This study ensures that the EMA accurately reflects an 8.45-day timeframe regardless of the chart's time interval.
+
+- **Purpose:**  
+  Assists traders in identifying trend directions and potential support or resistance levels by smoothing price data over an 8.45-day period. The adaptability to various aggregation periods allows for consistent trend analysis across different time frames, enhancing decision-making processes.
+
+- **Usage:**  
+  Ideal for traders seeking a precise EMA that corresponds to an 8.45-day period. Useful for trend identification, spotting potential reversal points, and serving as a dynamic support or resistance indicator across multiple time frames.
+
+```
+# Draws an 8.45-Day Exponential Moving Average (EMA) adaptable to any aggregation period
+declare once_per_bar;
+
+# 12168 minutes = 8.45 Days x 24 Hours x 60 Minutes
+plot AvgExp = ExpAverage(close, (12168 / (GetAggregationPeriod() / 60000)));
+AvgExp.AssignValueColor(Color.DARK_ORANGE);
+AvgExp.HideBubble();
+```
+
+Example usage on Chart (note the different timeframes)
+
+![Screenshot](./ScreenShots/845EMA.PNG)
+
 ### Advancing/Decline Index (AD%)
+---
 
 - **Description:** Displays the Advancing/Declining Index (AD%) for various market sectors, providing a ratio of advancing to declining stocks. This script adds customizable labels to your thinkorSwim chart, showing the AD% for the S&P (`SP`), Nasdaq (`NQ`), Russell (`RU`), and All Markets (`ALL`).
 
@@ -49,6 +76,7 @@ AddLabel(yes, "ALL " + C4, Color.WHITE);
 ```
 
 ### Advancing / Decline Index Components Volume Ratio
+---
 
 - **Description:**  
   This script calculates and plots the volume ratio of advancing to declining components for multiple market indices. By analyzing the balance between advancing and declining volumes, it provides a clear visual representation of market breadth and momentum across different sectors.
@@ -120,9 +148,61 @@ Example usage on Chart
 
 ![Screenshot](./ScreenShots/ADIndicators.PNG)
 
+### Breadth Ratio Indicator
+---
 
+- **Description:**  
+  Displays the breadth ratio of advancing to declining volumes for selected markets (NYSE or NASDAQ). This indicator visualizes the balance between advancing and declining volumes through a color-coded histogram and labeled ratios, providing a clear representation of market breadth dynamics.
+
+- **Purpose:**  
+  Enables traders and analysts to assess the overall market sentiment by comparing the volume of advancing stocks to declining stocks. A higher breadth ratio indicates stronger market breadth and potential bullishness, while a lower ratio suggests weaker market breadth and possible bearishness. This tool assists in confirming price trends, identifying potential reversals, and making informed trading decisions based on volume distribution.
+
+- **Usage:**  
+  Ideal for traders and market analysts who incorporate market breadth into their trading strategies. Useful for evaluating the strength of market movements, validating trend continuations, and spotting divergences between price action and volume-based breadth indicators. By selecting between NYSE and NASDAQ, users can tailor the indicator to their specific market focus.
+
+```
+# Breadth Ratio Script
+
+declare lower;
+
+# Inputs
+input ShowZeroLine = yes;
+input market = {default NYSE, NASDAQ};
+
+# Get Data
+def UVOL = close("$UVOL");
+def DVOL = close("$DVOL");
+def UVOLQ = close("$UVOL/Q");
+def DVOLQ = close("$DVOL/Q");
+
+# NYSE Breadth ratio
+def NYSEratio = if (UVOL >= DVOL) then (UVOL / DVOL) else -(DVOL / UVOL);
+AddLabel(if market then no else yes, Concat(Round(NYSEratio, 2), " :1 NYSE"), (if NYSEratio >= 0 then Color.DARK_GREEN else Color.RED));
+
+# Nasdaq Breadth ratio
+def NASDratio = if (UVOLQ >= DVOLQ) then (UVOLQ / DVOLQ) else -(DVOLQ / UVOLQ);
+AddLabel(if market then yes else no, Concat(Round(NASDratio, 2), " :1 NASD"), (if NASDratio >= 0 then Color.DARK_GREEN else Color.RED));
+
+# ZeroLine
+plot zeroline = if ShowZeroLine then 0 else Double.NaN;
+zeroline.AssignValueColor(Color.DARK_GRAY);
+zeroline.SetLineWeight(1);
+zeroline.HideTitle();
+zeroline.HideBubble();
+
+# Histogram Function
+plot Breadth = if market then NASDratio else NYSEratio;
+Breadth.AssignValueColor(if Breadth >= 0 then Color.GREEN else Color.RED);
+Breadth.SetPaintingStrategy(PaintingStrategy.HISTOGRAM);
+Breadth.SetLineWeight(1);
+```
+
+Example usage on Chart
+
+![Screenshot](./ScreenShots/Breadth.PNG)
 
 ### Big Blocks Indicator
+---
 
 - **Description:** Identifies and highlights significant trades by analyzing the ratio of volume to the number of trades.
 - **Purpose:** Helps traders detect large trading activities, which may indicate strong market moves or significant interest in a particular security.
@@ -146,8 +226,8 @@ Example usage on Chart
 
 ![Screenshot](./ScreenShots/BigBlocks.PNG)
 
-
 ### Chart Labels: Change, Volume & Relative Volume
+---
 
 - **Description:**  
   Displays key metrics on the chart including the percentage change since the previous close, percentage change since the open, daily volume in millions, and relative volume compared to the average. Each label is color-coded to provide quick visual insights into market movements and trading activity.
@@ -158,7 +238,7 @@ Example usage on Chart
 - **Usage:**  
   Ideal for active traders and day traders who require immediate access to critical market data. Helps in monitoring stock performance, assessing volatility, and evaluating trading volume trends to make informed entry and exit decisions.
 
-```thinkscript
+```
 # Chart Labels: Change, Volume & Relative Volume
 # Show labels in the Chart with Change since close, Change since Open, Volume and Relative Volume
 
@@ -203,7 +283,12 @@ AddLabel(!IsNaN(RelVol), "rv " + RelVol + "%",
     CreateColor(0, 67, 125));
 ```
 
+Example usage on Chart
+
+![Screenshot](./ScreenShots/Label.PNG)
+
 ### Bars to Next Earnings
+---
 
 - **Description:** Displays the number of bars remaining until the next earnings report and provides information about past and upcoming earnings dates within a 30-day lookup period.
   
@@ -238,6 +323,7 @@ AddLabel(yes, "E:" + a, if a < 0 then Color.RED else Color.BLACK);
 ```
 
 ### Imp Volatility
+---
 
 - **Description:** Displays the current Implied Volatility (IV) along with its ranking levels and range over a defined period.
 - **Purpose:** Helps traders assess the relative level of implied volatility, identifying whether the current IV is low, medium, or high within the historical range. This aids in making informed decisions about option trading strategies based on volatility trends.
@@ -300,6 +386,7 @@ AddLabel(yes, ">80: " + AsPercent(l4 / (l1 + l2 + l3 + l4)), Color.WHITE);
 
 
 ### Volatility Complete Study
+---
 
 - **Description:**  
   Displays implied volatility alongside historical volatility and range rank levels. This study visualizes how the current implied volatility compares to its historical values and ranks its position within a defined range.
@@ -383,8 +470,8 @@ Example usage on Chart
 
 ![Screenshot](./ScreenShots/VolatilityStudies.PNG)
 
-
 ### Volume Profile
+---
 
 - **Description:** Visualizes the volume distribution of a security throughout the trading day, automatically initiating profiles at market open and close.
 - **Purpose:** Helps traders analyze where the majority of trading volume occurs, identifying key price levels of interest and potential support or resistance areas based on volume concentration.
@@ -443,18 +530,17 @@ Example usage on Chart
 
 ![Screenshot](./ScreenShots/VolumeProfile.PNG)
 
-
 ### Intraday PIVOTS
+---
 
 - **Description:** Plots key pivot lines including the previous day's high and low, current day's high and low, and Regular Trading Hours (RTH) open and close prices on intraday charts.
 - **Purpose:** Helps traders identify critical support and resistance levels throughout the trading day by visualizing important price points. This facilitates better decision-making for entry and exit points during intraday trading.
 - **Usage:** Ideal for intraday traders using the thinkorSwim platform who seek to monitor essential pivot levels in real-time. The script automatically updates pivot lines based on daily and RTH data, providing a clear visual reference for market conditions.
 
-```thinkscript
+```
 # intraday PIVOTS
 
 # Show the Pivot Lines for various datapoints as described in the notes below
-# Feb 2016
 
 declare hide_on_daily;
 declare once_per_bar;
@@ -525,8 +611,8 @@ Example usage on Chart
 
 ![Screenshot](./ScreenShots/Pivots.PNG)
 
-
 ### Week Expected Move (1σ)
+---
 
 - **Description:** Calculates the one standard deviation (1σ) expected price move for the week based on the previous Friday's closing price and the implied volatility.
 - **Purpose:** Helps traders anticipate the potential price range for the upcoming week by providing upper and lower bounds derived from historical volatility data. This assists in making informed trading decisions regarding entry and exit points.
@@ -597,8 +683,8 @@ Example usage on Chart
 
 ![Screenshot](./ScreenShots/Expected.PNG)
 
-
 ### Day Expected Move
+---
 
 - **Description:** Calculates and visualizes the expected daily price range based on implied volatility and the remaining trading time until the market close. This script generates upper and lower bounds representing potential price movements for the trading day.
 
@@ -606,7 +692,7 @@ Example usage on Chart
 
 - **Usage:** Ideal for day traders and intraday traders who want to gauge the potential volatility and price range for the trading day. By understanding the expected move, traders can better plan their strategies, set stop-loss levels, and identify possible breakout or reversal scenarios.
 
-```thinkscript
+```
 # Day Expected Move
 
 declare hide_on_daily;
@@ -659,6 +745,27 @@ Example usage on Chart
 
 ![Screenshot](./ScreenShots/ExpectedIntraday.PNG)
 
+### Notional
+---
+
+- **Description:**  
+  Displays essential notional metrics including Tick Size (TS), Tick Value (TV), and Notional Value (NV) directly on the chart. This label provides traders with real-time insights into the pricing structure and the calculated notional value based on the current closing price.
+
+- **Purpose:**  
+  Facilitates quick assessment of key financial metrics without the need for manual calculations. By presenting Tick Size, Tick Value, and Notional Value in a single, concise label, traders can make informed decisions regarding position sizing, risk management, and overall market exposure.
+
+- **Usage:**  
+  Ideal for traders and analysts who require immediate access to notional data to evaluate the financial implications of their trades. Useful for monitoring position sizes, calculating potential profits or losses, and managing leverage effectively within various trading strategies.
+
+```
+# Notional
+
+AddLabel (yes, "TS: " + TickSize() + " TV: " + AsDollars(TickValue()) + " NV: " + AsDollars(close() / TickSize() * TickValue()) , Color.BLACK);
+```
+
+Example usage on Chart
+
+![Screenshot](./ScreenShots/Notional.PNG)
 
 [Back to main](./README.md)
 

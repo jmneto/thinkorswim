@@ -10,8 +10,8 @@ Example usage on Scanner
 
 ![Screenshot](./ScreenShots/ScannerColumns.PNG)
 
-
 ### Implied Volatility Percent
+---
 
 - **Description:** Displays the current Implied Volatility (IV) as a percentage.
 - **Purpose:** Helps assess the market's expectation of future volatility for a particular security.
@@ -30,6 +30,7 @@ IV.AssignValueColor(Color.WHITE);
 ```
 
 ### Implied Volatility Rank
+---
 
 - **Description:** Shows the current IV Rank, indicating where the current IV stands relative to its historical range over the past 252 trading days.
 - **Purpose:** Assists in determining whether the IV is high or low compared to historical levels.
@@ -50,6 +51,7 @@ IVR.AssignValueColor (if IVR < 20 then Color.RED else if IVR > 80 then Color.GRE
 ```
 
 ### 5-Minute Price Range
+---
 
 - **Description:** Shows the price movement range over the last 5 minutes as a percentage.
 - **Purpose:** Offers an even more granular view of price changes for short-term trading strategies.
@@ -81,6 +83,7 @@ output.AssignValueColor(
 ```
 
 ### 15-Minute Price Range
+---
 
 - **Description:** Reflects the price movement range over the last 15 minutes as a percentage.
 - **Purpose:** Provides a short-term view of price fluctuations to identify potential breakout or reversal points.
@@ -112,6 +115,7 @@ output.AssignValueColor(
 ```
 
 ### 52-Week Price Range
+---
 
 - **Description:** Displays the current price position within the 52-week high and low range as a percentage.
 - **Purpose:** Offers a long-term perspective on a security's price performance.
@@ -144,6 +148,7 @@ output.AssignValueColor(
 ```
 
 ### After Hours Volume
+---
 
 - **Description:** Displays the trading volume that occurs after regular market hours.
 - **Purpose:** Provides insights into trading activity outside of standard trading sessions, which can influence overnight price movements.
@@ -168,6 +173,7 @@ AddLabel(yes, Round(v / 1000, 1) + "K",
 ```
 
 ### 5-Minute Price Change
+---
 
 - **Description:** Displays the current price change percentage over the last 5 minutes.
 - **Purpose:** Provides a short-term view of price movements, allowing traders to quickly assess recent market activity.
@@ -198,6 +204,7 @@ output.AssignValueColor(
 ```
 
 ### Percent Change Since Last Close (C%)
+---
 
 - **Description:** Shows the current percent change since the last market close, including after-hours (AH) trading.
 - **Purpose:** Provides a comprehensive view of a stock's performance relative to its previous closing price, factoring in after-hours movements.
@@ -228,6 +235,7 @@ output.AssignValueColor(
 ```
 
 ### Percent Change Since Open (O%)
+---
 
 - **Description:** Displays the current percent change since the market open.
 - **Purpose:** Offers a real-time perspective on how a stock is performing relative to its opening price.
@@ -254,6 +262,7 @@ output.AssignValueColor(
 ```
 
 ### Earnings Day Count
+---
 
 - **Description:** Displays the number of bars until the next scheduled earnings report or since the last earnings report.
 - **Purpose:** Helps traders keep track of upcoming earnings announcements, which can significantly impact stock prices.
@@ -290,6 +299,7 @@ a.AssignValueColor(
 ```
 
 ### Relative Volume (RV%)
+---
 
 - **Description:** Shows the current trading volume as a percentage relative to the stock's average volume.
 - **Purpose:** Indicates the intensity of trading activity, highlighting unusual volume spikes that may signal significant market interest or potential price movements.
@@ -311,6 +321,7 @@ RelVol.AssignValueColor(
 ```
 
 ### 5-Minute Relative Volume %
+---
 
 - **Description:** Indicates the relative volume over the past 5 minutes compared to the stock's average volume.
 - **Purpose:** Measures the intensity of trading activity, highlighting unusual volume spikes.
@@ -332,6 +343,7 @@ RelVol.AssignValueColor(
 ```
 
 ### Daily Range (Rg%)
+---
 
 - **Description:** Displays the current price as a percentage of the daily price range.
 - **Purpose:** Provides insight into where the current price stands within the day's high and low, helping traders identify potential support and resistance levels.
@@ -371,6 +383,7 @@ Example usage on Options Chain
 ![Screenshot](./ScreenShots/OptionsChainColumns.PNG)
 
 ### Open Interest Difference (1 Day Ago) 
+---
 
 - **Description:** Displays the difference in open interest compared to 1 day ago.
 - **Purpose:** Helps traders monitor changes in open interest on a daily basis, which can indicate market sentiment and potential price movements.
@@ -394,6 +407,7 @@ AddLabel(yes, a,
 ```
 
 ### Open Interest Difference (2 Days Ago) 
+---
 
 - **Description:** Displays the difference in open interest compared to 2 days ago.
 - **Purpose:** Provides a short-term view of changes in open interest, offering insights into recent trading activity and potential trends.
@@ -417,6 +431,7 @@ AddLabel(yes, a,
 ```
 
 ### Current Open Interest 
+---
 
 - **Description:** Displays the current open interest.
 - **Purpose:** Provides traders with real-time data on the number of outstanding contracts, offering insights into market liquidity and trader sentiment.
@@ -436,6 +451,7 @@ AddLabel(yes, a,
 ```
 
 ### Yesterday's Open Interest 
+---
 
 - **Description:** Displays yesterday's open interest.
 - **Purpose:** Provides a reference point for comparing current open interest, helping to identify trends and shifts in market activity.
@@ -455,6 +471,7 @@ AddLabel(yes, a,
 ```
 
 ### Current Volume 
+---
 
 - **Description:** Displays the current trading volume.
 - **Purpose:** Indicates the number of shares or contracts traded, providing insights into the strength and sustainability of price movements.
@@ -474,6 +491,7 @@ AddLabel(yes, a,
 ```
 
 ### Yesterday's Volume 
+---
 
 - **Description:** Displays yesterday's trading volume.
 - **Purpose:** Serves as a benchmark to compare current volume, aiding in the assessment of current trading activity relative to the previous day.
