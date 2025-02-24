@@ -1,9 +1,9 @@
 
-# ThinkScript Custom Chart Indicators
+# thinkorSwim thinkScript Custom Chart Indicators
 
 ### Advancing/Decline Index (AD%)
 
-- **Description:** Displays the Advancing/Declining Index (AD%) for various market sectors, providing a ratio of advancing to declining stocks. This script adds customizable labels to your ThinkorSwim chart, showing the AD% for the S&P (`SP`), Nasdaq (`NQ`), Russell (`RU`), and All Markets (`ALL`).
+- **Description:** Displays the Advancing/Declining Index (AD%) for various market sectors, providing a ratio of advancing to declining stocks. This script adds customizable labels to your thinkorSwim chart, showing the AD% for the S&P (`SP`), Nasdaq (`NQ`), Russell (`RU`), and All Markets (`ALL`).
 
 - **Purpose:** Helps traders assess the overall market breadth by comparing the number of advancing stocks to declining ones across different indices. A higher AD% indicates stronger market participation, while a lower AD% may signal weakening breadth and potential market reversals.
 
@@ -62,7 +62,7 @@ AddLabel(yes, "ALL " + C4, Color.WHITE);
   - Confirming trends by comparing volume ratios across different symbols.
   - Detecting divergences that may indicate potential market reversals.
   
-  Suitable for use in the Thinkorswim platform as a lower study to complement other technical analysis tools.
+  Suitable for use in the thinkorSwim platform as a lower study to complement other technical analysis tools.
 
 ```
 # Advancing / Decline Index Components Volume Ratio
@@ -209,7 +209,7 @@ AddLabel(!IsNaN(RelVol), "rv " + RelVol + "%",
   
 - **Purpose:** Assists traders in tracking upcoming earnings events and reviewing historical earnings data. This information is valuable for anticipating potential price movements and volatility associated with earnings announcements.
 
-- **Usage:** Ideal for traders and investors who want to monitor earnings schedules directly within their ThinkOrSwim watchlists or charts. By knowing the proximity of earnings events, users can make more informed decisions regarding position sizing, entry and exit points, and risk management around earnings dates.
+- **Usage:** Ideal for traders and investors who want to monitor earnings schedules directly within their thinkorSwim watchlists or charts. By knowing the proximity of earnings events, users can make more informed decisions regarding position sizing, entry and exit points, and risk management around earnings dates.
 
 ```
 # Show information about past and future earnings dates
@@ -448,7 +448,7 @@ Example usage on Chart
 
 - **Description:** Plots key pivot lines including the previous day's high and low, current day's high and low, and Regular Trading Hours (RTH) open and close prices on intraday charts.
 - **Purpose:** Helps traders identify critical support and resistance levels throughout the trading day by visualizing important price points. This facilitates better decision-making for entry and exit points during intraday trading.
-- **Usage:** Ideal for intraday traders using the thinkorswim platform who seek to monitor essential pivot levels in real-time. The script automatically updates pivot lines based on daily and RTH data, providing a clear visual reference for market conditions.
+- **Usage:** Ideal for intraday traders using the thinkorSwim platform who seek to monitor essential pivot levels in real-time. The script automatically updates pivot lines based on daily and RTH data, providing a clear visual reference for market conditions.
 
 ```thinkscript
 # intraday PIVOTS
@@ -660,7 +660,7 @@ Example usage on Chart
 ![Screenshot](./ScreenShots/ExpectedIntraday.PNG)
 
 
-
+[Back to main](./README.md)
 
 
 

@@ -1,4 +1,4 @@
-# ThinkScript Custom Columns
+# thinkorSwim thinkScript Custom Columns
 
 ## MarketWatch and Scanner Columns
 
@@ -491,3 +491,6 @@ AddLabel(yes, a,
     if a > 2000 then CreateColor(0, 100, 200) else
     CreateColor(0, 50, 125));
 ```
+
+
+[Back to main](./README.md)
