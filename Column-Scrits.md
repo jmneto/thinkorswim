@@ -1,6 +1,21 @@
-# thinkorswim thinkScript Custom Columns
+<h1 align="center">
+  Custom thinkorswim thinkScript Chart Indicators &  MarketWatch / Scanner Columns
+</h1>
 
-# Table of Contents
+<p align="center">
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg" alt="MIT license">
+  </a>
+</p>
+
+# Navigation
+
+- [**Charts (Indicators)**](./Chart-Scripts.md)  
+- **Columns (MarketWatch or Scanner)** 
+- [**Advanced Scripts**](./Advanced-Scripts.md)
+- [**Back to main**](./README.md)
+
+# Contents
 
 - [Introduction](#introduction)
 - [MarketWatch and Scanner Columns](#marketwatch-and-scanner-columns)
@@ -336,7 +351,7 @@ a.AssignValueColor(
 # Watchlist column showing Relative Volume
 # TOS Column Timeframe Configuration: Daily
 
-plot RelVol = Round(100 * (volume / Average(volume)), 1);
+plot RelVol = Round(100 * (volume / Average(volume)[1]), 1);
 
 RelVol.AssignValueColor(
     if RelVol > 125 then CreateColor(171, 216, 255) else
@@ -358,7 +373,7 @@ RelVol.AssignValueColor(
 # Watchlist column showing Relative Volume in the last 5 minutes
 # TOS Column Timeframe Configuration: 5 Minute include Extended-Hours Trading Session
 
-plot RelVol = Round(100 * (volume / Average(volume)), 1);
+plot RelVol = Round(100 * (volume / Average(volume)[1]), 1);
 
 RelVol.AssignValueColor(
     if RelVol > 125 then CreateColor(171, 216, 255) else

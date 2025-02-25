@@ -1,7 +1,22 @@
 
-# thinkorswim thinkScript Custom Chart Indicators
+<h1 align="center">
+  Custom thinkorswim thinkScript Chart Indicators &  MarketWatch / Scanner Columns
+</h1>
 
-# Table of Contents
+<p align="center">
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg" alt="MIT license">
+  </a>
+</p>
+
+# Navigation
+
+- **Charts (Indicators)** 
+- [**Columns (MarketWatch or Scanner)**](./Column-Scrits.md) 
+- [**Advanced Scripts**](./Advanced-Scripts.md)
+- [**Back to main**](./README.md)
+
+# Contents
 
 - [8.45-Day Exponential Moving Average (EMA) dynamic aggregation period](#845-day-exponential-moving-average-ema-dynamic-aggregation-period)
 - [Advancing/Decline Index (AD%)](#advancingdecline-index-ad)
@@ -291,14 +306,14 @@ AddLabel(yes, Round(v / 1000000, 1) + "M",
     Color.GRAY
 );
 
-# Relative Volume
-def RelVol = Round(100 * (volume(Period = AggregationPeriod.DAY) / Average(volume(Period = AggregationPeriod.DAY))), 1);
+#Relative Volume
+def RelVol = Round(100 * (volume(Period = AggregationPeriod.DAY) / Average(volume(Period = AggregationPeriod.DAY))[1]), 1);
 AddLabel(!IsNaN(RelVol), "rv " + RelVol + "%", 
     if RelVol > 125 then CreateColor(171, 216, 255) else
     if RelVol > 100 then CreateColor(80, 173, 255) else
     if RelVol > 75  then CreateColor(10, 141, 255) else
     if RelVol > 50  then CreateColor(0, 104, 195) else
-    CreateColor(0, 67, 125));
+    CreateColor( 0, 67, 125));
 ```
 
 Example usage on Chart
