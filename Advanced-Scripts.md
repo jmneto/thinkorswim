@@ -1,4 +1,15 @@
-# thinkorSwim thinkScript Advanced Custom Chart Indicators
+# thinkorswim thinkScript Advanced Custom Chart Indicators
+
+# Table of Contents
+
+- [Pairs Study](#pairs-study)
+- [Pairs StudyFutures](#pairs-studyfutures)
+- [Breakout Detector Column](#breakout-detector-column)
+- [Breakout Detector](#breakout-detector)
+- [Correlation Analyzer Study](#correlation-analyzer-study)
+- [Correlation Display Study](#correlation-display-study)
+- [MultiRank](#multirank)
+- [Back to main](./README.md)
 
 ### Pairs Study
 ---
@@ -101,7 +112,7 @@
   Utilizes assertions and data caching to ensure the study runs efficiently, processing data only for intraday periods and maintaining performance even with extensive datasets.
 
 - **Ease of Integration:**  
-  Designed to work seamlessly within the Thinkorswim platform, requiring symbols in the /ZC-/ZS format, making it easy to incorporate into existing trading setups and strategies.
+  Designed to work seamlessly within the thinkorswim platform, requiring symbols in the /ZC-/ZS format, making it easy to incorporate into existing trading setups and strategies.
 
 Example usage on Chart
 

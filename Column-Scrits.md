@@ -1,4 +1,31 @@
-# thinkorSwim thinkScript Custom Columns
+# thinkorswim thinkScript Custom Columns
+
+# Table of Contents
+
+- [Introduction](#introduction)
+- [MarketWatch and Scanner Columns](#marketwatch-and-scanner-columns)
+   - [Implied Volatility Percent](#implied-volatility-percent)
+   - [Implied Volatility Rank](#implied-volatility-rank)
+   - [5-Minute Price Range](#5-minute-price-range)
+   - [15-Minute Price Range](#15-minute-price-range)
+   - [52-Week Price Range](#52-week-price-range)
+   - [After Hours Volume](#after-hours-volume)
+   - [5-Minute Price Change](#5-minute-price-change)
+   - [Percent Change Since Last Close (C%)](#percent-change-since-last-close-c)
+   - [Percent Change Since Open (O%)](#percent-change-since-open-o)
+   - [Earnings Day Count](#earnings-day-count)
+   - [Relative Volume (RV%)](#relative-volume-rv)
+   - [5-Minute Relative Volume %](#5-minute-relative-volume-)
+   - [Daily Range (Rg%)](#daily-range-rg)
+- [Option Chain Columns](#option-chain-columns)
+   - [Open Interest Difference (1 Day Ago)](#open-interest-difference-1-day-ago)
+   - [Open Interest Difference (2 Days Ago)](#open-interest-difference-2-days-ago)
+   - [Current Open Interest](#current-open-interest)
+   - [Yesterday's Open Interest](#yesterdays-open-interest)
+   - [Current Volume](#current-volume)
+   - [Yesterday's Volume](#yesterdays-volume)
+- [Back to main](./README.md)
+
 
 ## MarketWatch and Scanner Columns
 
